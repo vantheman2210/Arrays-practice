@@ -25,16 +25,16 @@ Hints: Use tools from all lectures in this section so far �
 GOOD LUCK �
 */
 
-const checkDogs = function (dogsJulia, dogsKate) { 
-  const dogsJuliaCopy = [...dogsJulia].slice(1, -2);
-  const allDogs = dogsJuliaCopy.concat(dogsKate);
-  console.log(dogsJuliaCopy);
-  console.log(allDogs);
-  allDogs.forEach((dog, i) => { 
-    console.log(`Dog number ${i + 1} is ${dog > 3 ? `an adult, and is ${dog} years old `: 'still a puppy'}`)
-  })
+const checkDogs = function(dogsJulia, dogsKate) {
+	const dogsJuliaCopy = [ ...dogsJulia ].slice(1, -2);
+	const allDogs = dogsJuliaCopy.concat(dogsKate);
+	console.log(dogsJuliaCopy);
+	console.log(allDogs);
+	allDogs.forEach((dog, i) => {
+		console.log(`Dog number ${i + 1} is ${dog > 3 ? `an adult, and is ${dog} years old ` : 'still a puppy'}`);
+	});
 };
 
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
-console.log('--------------------------------')
-checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+checkDogs([ 3, 5, 2, 12, 7 ], [ 4, 1, 15, 8, 3 ]);
+console.log('--------------------------------');
+checkDogs([ 9, 16, 6, 8, 3 ], [ 10, 5, 6, 1, 4 ]);
