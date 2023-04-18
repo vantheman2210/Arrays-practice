@@ -143,12 +143,25 @@ console.log(withdrawals);
 // Accumulator => snowball
 console.log('---------Reduce Method---------');
 console.log(movements);
+
 const balance = movements.reduce((acc, curr, i, arr) => {
 	console.log(`Iteration ${i}: ${acc}`)
 	return acc + curr
 }, 0)
 console.log('Balance: ' + balance)
+
 // Using for of loop
 let balance2 = 0;
 for (const mov of movements) balance2 += mov;
 console.log(balance2)
+
+// Maximum value
+const max = movements.reduce((acc, mov) => acc > mov ? acc : mov, movements[0]);
+// Expanded solution
+// const max = movements.reduce((acc, mov) => {
+// 	if(acc > mov)
+// 	return acc;
+// 	else
+// 	return mov;
+// }, movements[0]);
+console.log(max);
