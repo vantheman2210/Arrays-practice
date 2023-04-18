@@ -24,7 +24,7 @@ Test data:
 Hints: Use tools from all lectures in this section so far �
 GOOD LUCK �
 */
-
+console.log('---------Challenge 1----------')
 const checkDogs = function(dogsJulia, dogsKate) {
 	const dogsJuliaCopy = [ ...dogsJulia ].slice(1, -2);
 	const allDogs = dogsJuliaCopy.concat(dogsKate);
@@ -59,7 +59,7 @@ Test data:
 § Data 2: [16, 6, 10, 5, 6, 1, 4]
 GOOD LUCK �
 */
-
+console.log('---------Challenge 2----------')
 const calcAverageHumanAge = function(ages) {
 	const adultDogs = ages.map((dogAge) => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4)).filter((dog) => dog >= 18);
 	// const adultDogAverage = adultDogs.reduce((acc, curr) => acc + curr, 0) / adultDogs.length;
@@ -70,3 +70,22 @@ const calcAverageHumanAge = function(ages) {
 };
 calcAverageHumanAge([ 5, 2, 4, 1, 15, 8, 3 ]);
 calcAverageHumanAge([ 16, 6, 10, 5, 6, 1, 4 ]);
+
+/*
+	Coding Challenge #3
+Rewrite the 'calcAverageHumanAge' function from Challenge #2, but this time
+as an arrow function, and using chaining!
+Test data:
+§ Data 1: [5, 2, 4, 1, 15, 8, 3]
+§ Data 2: [16, 6, 10, 5, 6, 1, 4]
+GOOD LUCK �
+*/
+console.log('---------Challenge 3----------');
+
+const calcAverageHumanAgeArrow = ages => ages
+.map(dogAge => dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4)
+.filter(dog => dog >= 18)
+.reduce((acc, curr, i, arr) => acc + curr / arr.length, 0);
+
+console.log(calcAverageHumanAgeArrow([ 5, 2, 4, 1, 15, 8, 3 ]));
+console.log(calcAverageHumanAgeArrow([ 16, 6, 10, 5, 6, 1, 4 ]));
