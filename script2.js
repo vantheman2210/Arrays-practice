@@ -126,8 +126,29 @@ console.log(movementsDescriptions);
 // Does not mutate, returns a new array
 console.log('---------Filter Method---------');
 
-const deposits = movements.filter(mov => { 
-	return mov > 0;
-})
+const deposits = movements.filter((mov) => mov > 0);
 console.log(movements);
 console.log(deposits);
+
+const despositsFor = [];
+for (const mov of movements) if (mov > 0) despositsFor.push(mov);
+console.log(despositsFor);
+
+const withdrawals = movements.filter((mov) => mov < 0);
+console.log(withdrawals);
+
+// Filter method
+// Boils down array to a single value
+// Arguments = (acc, curr)
+// Accumulator => snowball
+console.log('---------Reduce Method---------');
+console.log(movements);
+const balance = movements.reduce((acc, curr, i, arr) => {
+	console.log(`Iteration ${i}: ${acc}`)
+	return acc + curr
+}, 0)
+console.log('Balance: ' + balance)
+// Using for of loop
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2)
