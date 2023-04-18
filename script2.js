@@ -165,3 +165,13 @@ const max = movements.reduce((acc, mov) => acc > mov ? acc : mov, movements[0]);
 // 	return mov;
 // }, movements[0]);
 console.log(max);
+
+// Chaining methods
+console.log('---------Chaining methods--------');
+// const eurToUsd: 1.1
+// Pipeline
+const totalUsd = movements
+.filter(mov => mov > 0)
+.map(mov => mov * eurToUsd) // Use arr argument to check for bugs in code
+.reduce((acc, curr) => acc + curr, 0); // cannot chain methods that do not return an array
+console.log(totalUsd);
