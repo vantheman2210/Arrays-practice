@@ -24,3 +24,8 @@ Test data:
 Hints: Use tools from all lectures in this section so far �
 GOOD LUCK �
 */
+
+const checkDogs = function (dogsJulia, dogsKate) { 
+  const dogsJuliaCopy = [...dogsJulia].splice(0, -2);
+  const allDogs = dogsJuliaCopy
+}
