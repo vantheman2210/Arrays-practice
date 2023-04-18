@@ -73,7 +73,6 @@ console.log('-------ForEach method-------');
 // 	}
 // }
 
-
 // There are 3 arguments (current element, index, array)
 // Cannot break out of for each loop
 // If you need to break out use for of loop
@@ -90,24 +89,35 @@ movements.forEach((move, i) => {
 */
 
 // MAP
-console.log('-------ForEach MAP--------')
-currencies.forEach((value, key, map) => { 
-  console.log(`${key}: ${value}`)
+console.log('-------ForEach MAP--------');
+currencies.forEach((value, key, map) => {
+	console.log(`${key}: ${value}`);
 });
 
 // SET
 // Sets have no keys, so second parameter is useless
-console.log('-------ForEach SET--------')
-const currenciesUnique = new Set(['USD', 'GBP', 'EUR', 'USD', 'EUR']);
+console.log('-------ForEach SET--------');
+const currenciesUnique = new Set([ 'USD', 'GBP', 'EUR', 'USD', 'EUR' ]);
 console.log(currenciesUnique);
-currenciesUnique.forEach((value, _, map) => { 
-  console.log(`${value}: ${value}`)
+currenciesUnique.forEach((value, _, map) => {
+	console.log(`${value}: ${value}`);
 });
 
+// Map method
+// Does not mutate, returns a new array
+console.log('---------MAP Method---------');
 const eurToUsd = 1.1;
-const movementsUsd = movements.map((mov) => { 
-	return mov * eurToUsd
-});
-console.log(movements)
-console.log(movementsUsd)
+const movementsUsd = movements.map((mov) => mov * eurToUsd);
+console.log(movements);
+console.log(movementsUsd);
 
+/*
+const movementsUsdFor = []
+for(const mov of movements) { 
+	movementsUsdFor.push(mov * eurToUsd)
+};
+console.log(movementsUsdFor)*/
+const movementsDescriptions = movements.map(
+	(mov, i) => `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+);
+console.log(movementsDescriptions);
