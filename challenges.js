@@ -87,5 +87,6 @@ const calcAverageHumanAgeArrow = ages => ages
 .filter(dog => dog >= 18)
 .reduce((acc, curr, i, arr) => acc + curr / arr.length, 0);
 
-console.log(calcAverageHumanAgeArrow([ 5, 2, 4, 1, 15, 8, 3 ]));
-console.log(calcAverageHumanAgeArrow([ 16, 6, 10, 5, 6, 1, 4 ]));
+const avg1 = calcAverageHumanAgeArrow([ 5, 2, 4, 1, 15, 8, 3 ]);
+const avg2 = calcAverageHumanAgeArrow([ 16, 6, 10, 5, 6, 1, 4 ]);
+console.log(avg1, avg2);
