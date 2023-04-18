@@ -27,5 +27,5 @@ GOOD LUCK �
 
 const checkDogs = function (dogsJulia, dogsKate) { 
   const dogsJuliaCopy = [...dogsJulia].splice(0, -2);
-  const allDogs = dogsJuliaCopy
+  const allDogs = dogsJuliaCopy.concat(dogsKate);
 }
