@@ -236,3 +236,57 @@ console.log(anyDeposits)
 console.log('------Every method---------');
 console.log(movements.every(mov => mov > 0));
 console.log(account4.movements.every(mov => mov > 0));
+
+// We can write callback functions separately and then call them in different methods as needed
+const deposit = mov => mov > 0;
+console.log(movements.every(deposit));
+console.log(movements.some(deposit));
+console.log(movements.filter(deposit));
+
+////// FLAT method 
+// No callback functions, it flattens array
+console.log('------FLAT method---------');
+const arr4 = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr4.flat());
+
+const arrDeep = [[1, [2, 3]], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2)) // Level of nesting
+
+const overallBalance = accounts.map(acc => acc.movements).flat().reduce((acc, curr) => acc + curr, 0);
+console.log(overallBalance);
+
+// FlatMap combines two methods into one
+// Only goes one(1) level deep
+const overallBalance2 = accounts
+.flatMap(acc => acc.movements)
+.reduce((acc, curr) => acc+ curr, 0);
+console.log(overallBalance2)
+
+// SORT methid
+// Mutates original arrays
+// Default: Turns everything to strings first
+// Strings
+console.log('--------SORT method---------')
+const owners = ['Vanja', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+
+// Numbers 
+console.log(movements)
+// console.log(movements.sort());
+
+// IF we return less than zero < 0, A, B (keep order)
+// If we return > 0 , B , A (switch order)
+
+// Ascending
+const sortNum1 = movements.sort((a, b) => { 
+	if(a > b) return 1;
+	if (a < b) return -1;
+});
+console.log(sortNum1);
+
+// Descending 
+const sortNum2 = movements.sort((a, b) => { 
+	if(a > b) return -1;
+	if (a < b) return 1;
+});
+console.log(sortNum2);
