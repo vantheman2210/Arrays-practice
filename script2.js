@@ -218,17 +218,21 @@ console.log(account);
 for (const acc of accounts) console.log(acc.owner = 'Jessica Davis')
 
 // FindIndex method 
-
 console.log('------findIndex method---------');
 const index = movements.findIndex(mov => mov === -400) 
 console.log(index)
-// Some method 
 
+////// Some method 
 console.log('------Some method---------');
 console.log(movements)
 // Only equality in .includes()
 console.log(movements.includes(-130));
-
 // Condition
 const anyDeposits = movements.some(mov => mov > 1500);
 console.log(anyDeposits)
+
+// Every method 
+// Every only returns true if all elements passes the test
+console.log('------Every method---------');
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
