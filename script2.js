@@ -8,6 +8,35 @@ const currencies = new Map([ [ 'USD', 'United States dollar' ], [ 'EUR', 'Euro' 
 
 const movements = [ 200, 450, -400, 3000, -650, -130, 70, 1300 ];
 
+const account1 = {
+	owner: 'Jonas Schmedtmann',
+	movements: [ 200, 450, -400, 3000, -650, -130, 70, 1300 ],
+	interestRate: 1.2, // %
+	pin: 1111
+};
+
+const account2 = {
+	owner: 'Jessica Davis',
+	movements: [ 5000, 3400, -150, -790, -3210, -1000, 8500, -30 ],
+	interestRate: 1.5,
+	pin: 2222
+};
+
+const account3 = {
+	owner: 'Steven Thomas Williams',
+	movements: [ 200, -200, 340, -300, -20, 50, 400, -460 ],
+	interestRate: 0.7,
+	pin: 3333
+};
+
+const account4 = {
+	owner: 'Sarah Smith',
+	movements: [ 430, 1000, 700, 50, 90 ],
+	interestRate: 1,
+	pin: 4444
+}; 
+const accounts = [ account1, account2, account3, account4 ];
+
 /////////////////////////////////////////////////
 
 let arr = [ 'a', 'b', 'c', 'd', 'e' ];
@@ -175,3 +204,31 @@ const totalUsd = movements
 .map(mov => mov * eurToUsd) // Use arr argument to check for bugs in code
 .reduce((acc, curr) => acc + curr, 0); // cannot chain methods that do not return an array
 console.log(totalUsd);
+
+// Find method 
+// Returns first element that is true
+console.log('------Find method---------');
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+
+for (const acc of accounts) console.log(acc.owner = 'Jessica Davis')
+
+// FindIndex method 
+
+console.log('------findIndex method---------');
+const index = movements.findIndex(mov => mov === -400) 
+console.log(index)
+// Some method 
+
+console.log('------Some method---------');
+console.log(movements)
+// Only equality in .includes()
+console.log(movements.includes(-130));
+
+// Condition
+const anyDeposits = movements.some(mov => mov > 1500);
+console.log(anyDeposits)
