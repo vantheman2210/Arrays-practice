@@ -34,7 +34,7 @@ const account4 = {
 	movements: [ 430, 1000, 700, 50, 90 ],
 	interestRate: 1,
 	pin: 4444
-}; 
+};
 const accounts = [ account1, account2, account3, account4 ];
 
 /////////////////////////////////////////////////
@@ -174,18 +174,18 @@ console.log('---------Reduce Method---------');
 console.log(movements);
 
 const balance = movements.reduce((acc, curr, i, arr) => {
-	console.log(`Iteration ${i}: ${acc}`)
-	return acc + curr
-}, 0)
-console.log('Balance: ' + balance)
+	console.log(`Iteration ${i}: ${acc}`);
+	return acc + curr;
+}, 0);
+console.log('Balance: ' + balance);
 
 // Using for of loop
 let balance2 = 0;
 for (const mov of movements) balance2 += mov;
-console.log(balance2)
+console.log(balance2);
 
 // Maximum value
-const max = movements.reduce((acc, mov) => acc > mov ? acc : mov, movements[0]);
+const max = movements.reduce((acc, mov) => (acc > mov ? acc : mov), movements[0]);
 // Expanded solution
 // const max = movements.reduce((acc, mov) => {
 // 	if(acc > mov)
@@ -200,123 +200,171 @@ console.log('---------Chaining methods--------');
 // const eurToUsd: 1.1
 // Pipeline
 const totalUsd = movements
-.filter(mov => mov > 0)
-.map(mov => mov * eurToUsd) // Use arr argument to check for bugs in code
-.reduce((acc, curr) => acc + curr, 0); // cannot chain methods that do not return an array
+	.filter((mov) => mov > 0)
+	.map((mov) => mov * eurToUsd) // Use arr argument to check for bugs in code
+	.reduce((acc, curr) => acc + curr, 0); // cannot chain methods that do not return an array
 console.log(totalUsd);
 
-// Find method 
+// Find method
 // Returns first element that is true
 console.log('------Find method---------');
-const firstWithdrawal = movements.find(mov => mov < 0);
+const firstWithdrawal = movements.find((mov) => mov < 0);
 console.log(movements);
 console.log(firstWithdrawal);
 
-const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+const account = accounts.find((acc) => acc.owner === 'Jessica Davis');
 console.log(account);
 
-for (const acc of accounts) console.log(acc.owner = 'Jessica Davis')
+for (const acc of accounts) console.log((acc.owner = 'Jessica Davis'));
 
-// FindIndex method 
+// FindIndex method
 console.log('------findIndex method---------');
-const index = movements.findIndex(mov => mov === -400) 
-console.log(index)
+const index = movements.findIndex((mov) => mov === -400);
+console.log(index);
 
-////// Some method 
+////// Some method
 console.log('------Some method---------');
-console.log(movements)
+console.log(movements);
 // Only equality in .includes()
 console.log(movements.includes(-130));
 // Condition
-const anyDeposits = movements.some(mov => mov > 1500);
-console.log(anyDeposits)
+const anyDeposits = movements.some((mov) => mov > 1500);
+console.log(anyDeposits);
 
-// Every method 
+// Every method
 // Every only returns true if all elements passes the test
 console.log('------Every method---------');
-console.log(movements.every(mov => mov > 0));
-console.log(account4.movements.every(mov => mov > 0));
+console.log(movements.every((mov) => mov > 0));
+console.log(account4.movements.every((mov) => mov > 0));
 
 // We can write callback functions separately and then call them in different methods as needed
-const deposit = mov => mov > 0;
+const deposit = (mov) => mov > 0;
 console.log(movements.every(deposit));
 console.log(movements.some(deposit));
 console.log(movements.filter(deposit));
 
-////// FLAT method 
+////// FLAT method
 // No callback functions, it flattens array
 console.log('------FLAT method---------');
-const arr4 = [[1, 2, 3], [4, 5, 6], 7, 8];
+const arr4 = [ [ 1, 2, 3 ], [ 4, 5, 6 ], 7, 8 ];
 console.log(arr4.flat());
 
-const arrDeep = [[1, [2, 3]], [4, [5, 6]], 7, 8];
-console.log(arrDeep.flat(2)) // Level of nesting
+const arrDeep = [ [ 1, [ 2, 3 ] ], [ 4, [ 5, 6 ] ], 7, 8 ];
+console.log(arrDeep.flat(2)); // Level of nesting
 
-const overallBalance = accounts.map(acc => acc.movements).flat().reduce((acc, curr) => acc + curr, 0);
+const overallBalance = accounts.map((acc) => acc.movements).flat().reduce((acc, curr) => acc + curr, 0);
 console.log(overallBalance);
 
 // FlatMap combines two methods into one
 // Only goes one(1) level deep
-const overallBalance2 = accounts
-.flatMap(acc => acc.movements)
-.reduce((acc, curr) => acc+ curr, 0);
-console.log(overallBalance2)
+const overallBalance2 = accounts.flatMap((acc) => acc.movements).reduce((acc, curr) => acc + curr, 0);
+console.log(overallBalance2);
 
 // SORT methid
 // Mutates original arrays
 // Default: Turns everything to strings first
 // Strings
-console.log('--------SORT method---------')
-const owners = ['Vanja', 'Zach', 'Adam', 'Martha'];
+console.log('--------SORT method---------');
+const owners = [ 'Vanja', 'Zach', 'Adam', 'Martha' ];
 console.log(owners.sort());
 
-// Numbers 
-console.log(movements)
+// Numbers
+console.log(movements);
 // console.log(movements.sort());
 
 // IF we return less than zero < 0, A, B (keep order)
 // If we return > 0 , B , A (switch order)
 
 // Ascending
-// const sortNum1 = movements.sort((a, b) => { 
+// const sortNum1 = movements.sort((a, b) => {
 // 	if(a > b) return 1;
 // 	if (a < b) return -1;
 // });
-const sortNum1 = movements.sort((a, b) => a - b)
+const sortNum1 = movements.sort((a, b) => a - b);
 console.log(sortNum1);
 
-// Descending 
-// const sortNum2 = movements.sort((a, b) => { 
+// Descending
+// const sortNum2 = movements.sort((a, b) => {
 // 	if(a > b) return -1;
 // 	if (a < b) return 1;
 // });
-const sortNum2 = movements.sort((a, b) => b - a)
+const sortNum2 = movements.sort((a, b) => b - a);
 console.log(sortNum2);
 
 // Generating arrays
-console.log('-------Generating and Filling arrays----------')
+console.log('-------Generating and Filling arrays----------');
 // Only fill method works on this array
 
 // Empty array and fill method
 const x = new Array(7);
-console.log(x)
+console.log(x);
 // console.log(x.map(() => 5));
 // x.fill(1);
-x.fill(1, 3)
+x.fill(1, 3);
 console.log(x);
 
 // Array.from
 // Using it from array constructor
 console.log('--------Array.from()----------');
-const y = Array.from({length: 7}, () => 1);
+const y = Array.from({ length: 7 }, () => 1);
 console.log(y);
 
-const z = Array.from({length: 7}, (_, i) => 1 + i);
+const z = Array.from({ length: 7 }, (_, i) => 1 + i);
 console.log(z);
 
-const arrDice = Array.from({length: 100}, (_, i) => Math.floor((Math.random() * 6) + 1))
+const arrDice = Array.from({ length: 100 }, (_, i) => Math.floor(Math.random() * 6 + 1));
 console.log(arrDice);
 
-const movementsUI = Array.from(document.querySelectorAll('.movements__value'),
-mov => mov.textContent.replace('€', ''))
-console.log(movementsUI)
+const movementsUI = Array.from(document.querySelectorAll('.movements__value'), (mov) =>
+	mov.textContent.replace('€', '')
+);
+console.log(movementsUI);
+
+// Arrays practice
+console.log('------Additional arrays practice--------');
+
+// 1.
+const bankDepositSum = accounts
+	.flatMap((acc) => acc.movements)
+	.filter((mov) => mov > 0)
+	.reduce((acc, curr) => acc + curr, 0);
+console.log(bankDepositSum);
+
+// 2.
+/* const numDeposits1000 = accounts
+.flatMap(acc => acc.movements)
+.filter(mov => mov >= 1000).length;
+console.log(numDeposits1000); */
+
+const numDeposits1000 = accounts
+	.flatMap((acc) => acc.movements)
+	.reduce((count, cur) => (cur >= 1000 ? (count += 1) : count), 0);
+console.log(numDeposits1000);
+
+// 3.
+
+// const {deposits, withdrawals}
+const sums = accounts.flatMap((acc) => acc.movements).reduce((sums, cur) => {
+	// cur > 0 ? sums.deposits += cur : sums.withdrawals += cur;
+	sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+	return sums;
+}, { deposits: 0, withdrawals: 0 });
+console.log(sums);
+
+// 4.
+// this is a nice title -> This Is a Nice Title
+
+const convertTitleCase = function(title) {
+	const capitalize = str => str[0].toUpperCase() + str.slice(1);
+	const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with', 'and'];
+
+	const titleCase = title
+		.toLowerCase()
+		.split(' ')
+		.map((word) => (exceptions.includes(word) ? word : capitalize(word)))
+		.join(' ');
+
+	return capitalize(titleCase);
+};
+console.log(convertTitleCase('this is a title case'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
