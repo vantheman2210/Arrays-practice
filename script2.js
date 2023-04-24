@@ -292,3 +292,31 @@ console.log(sortNum1);
 // });
 const sortNum2 = movements.sort((a, b) => b - a)
 console.log(sortNum2);
+
+// Generating arrays
+console.log('-------Generating and Filling arrays----------')
+// Only fill method works on this array
+
+// Empty array and fill method
+const x = new Array(7);
+console.log(x)
+// console.log(x.map(() => 5));
+// x.fill(1);
+x.fill(1, 3)
+console.log(x);
+
+// Array.from
+// Using it from array constructor
+console.log('--------Array.from()----------');
+const y = Array.from({length: 7}, () => 1);
+console.log(y);
+
+const z = Array.from({length: 7}, (_, i) => 1 + i);
+console.log(z);
+
+const arrDice = Array.from({length: 100}, (_, i) => Math.floor((Math.random() * 6) + 1))
+console.log(arrDice);
+
+const movementsUI = Array.from(document.querySelectorAll('.movements__value'),
+mov => mov.textContent.replace('€', ''))
+console.log(movementsUI)
